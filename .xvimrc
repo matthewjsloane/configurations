@@ -34,12 +34,22 @@ map ,rp  :run<CR>
 map ,bp  :xcmenucmd Build<CR>
 map ,cp  :xcmenucmd Clean<CR>
 
-" show standard editor to close assistant editor
-map ,sa :xccmd changeToGeniusEditor<CR>
-" add new assistant editor
-map ,aa :xccmd addAssistantEditor<CR>
-" del one assistant editor 
-map ,da :xccmd removeAssistantEditor<CR>
+" open file
+map <C-p> :xccmd openQuickly<CR>
 
 " Search the string cursor points to
 map ,s viw:xccmd findSelectedTextInWorkspace<CR>
+
+" jump to definition
+nnoremap <C-b> :xcmenucmd Jump to Definition<CR>
+
+" go forwards and backwards in file history
+map <C-[> :xccmd goBackInHistoryByCommand<CR>
+map <C-]> :xccmd goForwardInHistoryByCommand<CR>
+
+
+" toggle sidebars
+map ,tl :xccmd toggleNavigatorsVisibility<CR>
+map ,tb :xccmd toggleDebuggerVisibility<CR>
+map ,tr :xccmd toggleUtilitiesVisibility<CR>
+map ,tt :xccmd toggleToolbarShown<CR>
