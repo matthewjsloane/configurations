@@ -1,0 +1,45 @@
+" xvim settings
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set wrap
+set wrapscan
+set gdefault
+set autoindent
+set number                                                   " show line numbers
+set clipboard=unnamed                                        " yank and paste with the system clipboard
+set directory-=.                                             " don't store swapfiles in the current directory
+set softtabstop=2                                            " insert mode tab and backspace use 2 spaces
+set tabstop=8                                                " actual tabs occupy 8 characters
+
+" Navigate between different windows with ctrl + movement keys
+map <C-j> <C-w>j<CR>
+map <C-k> <C-w>k<CR>
+map <C-h> <C-w>h<CR>
+map <C-l> <C-w>l<CR>
+
+" remove whitespace
+command! KillWhitespace :normal :%s/\s\+$//g<cr>
+nnoremap <silent> ;k :KillWhitespace<cr>:nohlsearch<cr>
+
+" re-indent file
+map <F7> mzgg=G`z
+
+" indent individual line
+noremap gcc :xccmd commentAndUncommentCurrentLines<CR>
+
+" Build, run and clean project
+map ,rp  :run<CR>
+map ,bp  :xcmenucmd Build<CR>
+map ,cp  :xcmenucmd Clean<CR>
+
+" show standard editor to close assistant editor
+map ,sa :xccmd changeToGeniusEditor<CR>
+" add new assistant editor
+map ,aa :xccmd addAssistantEditor<CR>
+" del one assistant editor 
+map ,da :xccmd removeAssistantEditor<CR>
+
+" Search the string cursor points to
+map ,s viw:xccmd findSelectedTextInWorkspace<CR>
